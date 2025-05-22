@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JO Store - إنشاء حساب</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/css/templatemo-lugx-gaming.css" />
+    <style>
+      body {
+        background-image: url('assets/images/banner-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        font-family: 'Poppins', sans-serif;
+        direction: rtl;
+      }
+      .signup-container {
+        max-width: 400px;
+        margin: 100px auto;
+        background: rgba(0, 0, 0, 0.85);
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+      }
+      .signup-container h2 {
+        margin-bottom: 20px;
+      }
+      .signup-container input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 5px;
+      }
+      .signup-container button {
+        background: #ec6090;
+        color: white;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .logo {
+        text-align: center;
+        margin-top: 40px;
+      }
+      .logo img {
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="JO Store Logo">
+    </div>
+    <div class="signup-container">
+      <h2>إنشاء حساب جديد</h2>
+      <input type="email" id="email" placeholder="البريد الإلكتروني" />
+      <input type="password" id="password" placeholder="كلمة المرور" />
+      <button onclick="signup()">تسجيل</button>
+    </div>
+
+    <script>
+      async function signup() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        try {
+          await firebase.auth().createUserWithEmailAndPassword(email, password);
+          alert("تم إنشاء الحساب بنجاح");
+          window.location.href = "dashboard.html";
+        } catch (error) {
+          alert("فشل في إنشاء الحساب: " + error.message);
+        }
+      }
+    </script>
+  </body>
+</html>
